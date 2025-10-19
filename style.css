@@ -1,1 +1,40 @@
-css file
+body {
+    font-family: Arial, sans-serif;
+    background: #f7f7f7;
+    color: #333;
+    text-align: center;
+    padding: 20px;
+  }
+
+  #alphabet {
+    margin-bottom: 20px;
+  }
+
+  .letter {
+    display: inline-block;
+    margin: 4px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    background: #eee;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .letter:hover {
+    background: #ccc;
+  }
+
+  #breedList {
+    list-style: none;
+    padding: 0;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  #breedList li {
+    background: white;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }

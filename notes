@@ -1,0 +1,3 @@
+Initially, I copied and looked at Harolds code Coctails A to Z as I wanted to edit the code to have an alphabetical index. I found it overwhelming and also saw that that specific API had a parameter endpoint that specifically organized it alphabetically. Thus, I pivoted and asked chatGPT to fetch a list of breeds from my API and put it into an interactive alphabetical index.
+
+Additionally I edited the footer that Harold used in the Coctails A to Z code
