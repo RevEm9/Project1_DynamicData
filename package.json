@@ -1,0 +1,23 @@
+{
+  "name": "project1_dynamicdata",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node --env-file=.env server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RevEm9/Project1_DynamicData.git"
+  },
+  "author": "Emily",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RevEm9/Project1_DynamicData/issues"
+  },
+  "homepage": "https://github.com/RevEm9/Project1_DynamicData#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
