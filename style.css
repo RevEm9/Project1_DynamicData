@@ -1,6 +1,6 @@
 body {
   font-family: Arial, sans-serif;
-  background: #f7f7f7;
+  background: #CDF0FF;
   color: #333;
   text-align: center;
   padding: 20px;
@@ -43,11 +43,12 @@ h1 {
 
 .letter {
   display: inline-block;
+  color: white;
   margin: 4px;
   padding: 8px 12px;
   border: 1px black solid;
   border-radius: 50%;
-  background: #eee;
+  background: #00416A;
   cursor: pointer;
   transition: background 0.2s;
 }
