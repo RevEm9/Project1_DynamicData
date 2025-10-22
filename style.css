@@ -186,3 +186,17 @@ h1 {
   cursor: pointer;
   /* cursor: url(cursor/dogpaw.png), auto;  */
 } 
+
+
+/* Add responsive sizing for smaller screens */
+@media (max-width: 768px) {
+  .letter {
+    width: 35px;
+    height: 35px;
+    font-size: 14px;
+  }
+  #breedList {
+    grid-template-columns: 1fr;  /* Single column on mobile */
+    max-width: 500px;
+  }
+}
