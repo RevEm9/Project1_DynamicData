@@ -13,14 +13,20 @@ footer{
 
 h1 {
   margin-bottom: 10px;
+  font-family:"hoss-round", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+
 }
+
+
 
 #searchBar {
   width: 80%;
   max-width: 400px;
   padding: 15px;
   border-radius: 25px;
-  border: 1px solid #ccc;
+  border: 1px solid black;
   margin-bottom: 20px;
   margin-top: 20px;
   font-size: 16px;
@@ -30,13 +36,17 @@ h1 {
 #alphabet {
   margin-bottom: 30px;
   padding: 10px;
+  font-family: "hoss-round", sans-serif;
+  font-weight: 500;
+  font-style: normal;
 }
 
 .letter {
   display: inline-block;
   margin: 4px;
-  padding: 6px 10px;
-  border-radius: 6px;
+  padding: 8px 12px;
+  border: 1px black solid;
+  border-radius: 50%;
   background: #eee;
   cursor: pointer;
   transition: background 0.2s;
@@ -46,43 +56,44 @@ h1 {
   background: #ccc;
 }
 
+
 #breedList {
   list-style: none;
   padding: 0;
-  max-width: 500px;
+  max-width: 1000px;  /* Increased from 500px */
   margin: 0 auto;
+  display: grid;      /* New: grid layout */
+  grid-template-columns: repeat(2, 1fr); /* New: 2 columns */
+  gap: 20px;         /* New: gap between items */
+  padding: 20px;     /* New: padding around grid */
 }
 
 #breedList li {
   background: white;
-  margin: 8px 0;
-  padding: 10px;
-  border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  margin: 0;         /* Changed from 8px 0 */
+  padding: 20px;     /* Increased from 10px */
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 20px;        /* Increased from 10px */
   text-align: left;
   transition: transform 0.2s;
   cursor: pointer;
 }
 
-#breedList li:hover {
-  transform: scale(1.02);
-}
-
 .breed-image {
-  width: 60px;
-  height: 60px;
+  width: 100px;     /* Increased from 60px */
+  height: 100px;    /* Increased from 60px */
   object-fit: cover;
-  border-radius: 6px;
+  border-radius: 8px;
   border: 1px solid #ddd;
 }
 
 .breed-name {
   flex: 1;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 18px;  /* Increased from 16px */
 }
 
 /* Popup Modal */
@@ -126,4 +137,3 @@ h1 {
   padding: 5px 8px;
   cursor: pointer;
 } 
-
