@@ -26,6 +26,12 @@ h2{
   margin-top: 0px;
 
 }
+
+#info{
+  font-family: "aptos-display", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
  
 
 
@@ -143,6 +149,7 @@ h2{
   font-family: "aptos-display", sans-serif;
   font-weight: 700;
   font-style: normal;
+  letter-spacing: 0.5px;
   font-size: 18px;  /* Increased from 16px */
 }
 
