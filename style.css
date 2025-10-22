@@ -22,6 +22,12 @@ h1 {
 
 }
 
+h2{
+  margin-top: 0px;
+
+}
+ 
+
 
 
 #searchBar {
@@ -152,11 +158,12 @@ h1 {
   align-items: center;
   justify-content: center;
   z-index: 1000;
+  padding: 10px;
 }
 
 .modal-content {
   background: white;
-  padding: 20px;
+  padding: 25px;
   border-radius: 10px;
   max-width: 400px;
   text-align: left;
@@ -172,6 +179,8 @@ h1 {
   width: 100%;
   border-radius: 10px;
   margin-bottom: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+
 }
 
 .close-btn {
