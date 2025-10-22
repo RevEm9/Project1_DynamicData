@@ -66,6 +66,7 @@ async function loadBreeds() {
             <h2>${breed.name}</h2>
             <img src="${imageUrl}" alt="${breed.name}">
             <p><strong>Temperament:</strong> ${breed.temperament || "N/A"}</p>
+            <p><strong>Origin:</strong> ${breed.origin}</p>
             <p><strong>Weight:</strong> ${breed.weight.metric} kg</p>
             <p><strong>Height:</strong> ${breed.height.metric} cm</p>
             <p><strong>Life span:</strong> ${breed.life_span}</p>
@@ -77,6 +78,7 @@ async function loadBreeds() {
             <h2>${breed.name}</h2>
             <p>Unable to load image</p>
             <p><strong>Temperament:</strong> ${breed.temperament || "N/A"}</p>
+            <p><strong>Origin:</strong> ${breed.origin}</p>
             <p><strong>Weight:</strong> ${breed.weight.metric} kg</p>
             <p><strong>Height:</strong> ${breed.height.metric} cm</p>
             <p><strong>Life span:</strong> ${breed.life_span}</p>
