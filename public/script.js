@@ -1,7 +1,6 @@
 async function loadBreeds() {
     try {
-        // const res = await fetch('http://localhost:2000/api/breeds');
-        const res = await fetch('/api/breeds');
+        const res = await fetch('http://localhost:2000/api/breeds');
         const breeds = await res.json();
         console.log('First breed:', breeds[0]);
 
@@ -43,8 +42,7 @@ async function loadBreeds() {
                 modal.style.display = "flex";
                 modalBody.innerHTML = '<p>Loading...</p>';
 
-                // const res = await fetch(`http://localhost:2000/api/breeds/${breedId}`);
-                const res = await fetch(`/api/breeds/${breedId}`);
+                const res = await fetch(`http://localhost:2000/api/breeds/${breedId}`);
                 const breed = await res.json();
 
                 modalBody.innerHTML = `
