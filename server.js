@@ -12,6 +12,8 @@ app.listen(PORT, () => {
 });
 
 
+// Below is the code used to host the API locally. Therefore to have the pages link work leave the code as it is, to host it comment the code above and uncomment the code below.
+
 // import express from 'express';
 // import path from 'path';
 // import cors from 'cors';
