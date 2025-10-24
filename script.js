@@ -1,3 +1,5 @@
+const API_KEY = "live_CxpHq3jPQAgeAAXiazL6UFInqAhkha8kGstILpRGx0HAch7PwrrIMW2rrekblxOK";
+
 async function loadBreeds() {
     try {
       const res = await fetch('https://api.thedogapi.com/v1/breeds', {
