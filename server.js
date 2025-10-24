@@ -80,30 +80,64 @@
 // app.listen(PORT, () => {
 //     console.log(`Server running at http://localhost:${PORT}`);
 // });
+import express from 'express';
+import path from 'path';
+import cors from 'cors';
+import fetch from 'node-fetch';
+import { fileURLToPath } from 'url';
 
-import express from "express";
-import fetch from "node-fetch";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const app = express();
+const PORT = 2000;
+const API_KEY = "your_api_key_here";
 
-app.use(express.static("public"));
+app.use(cors());
+app.use(express.json());
+app.use(express.static(__dirname));
 
-app.get("/api/breeds", async (req, res) => {
-  const response = await fetch("https://api.thedogapi.com/v1/breeds", {
-    headers: { "x-api-key": process.env.DOG_API_KEY },
-  });
-  const data = await response.json();
-  res.json(data);
+// ✅ Fetch all breeds
+app.get('/api/breeds', async (req, res) => {
+    try {
+        const response = await fetch('https://api.thedogapi.com/v1/breeds', {
+            headers: { 'x-api-key': API_KEY }
+        });
+        const data = await response.json();
+        res.json(data);
+    } catch (error) {
+        console.error('Server error:', error);
+        res.status(500).json({ error: 'Failed to fetch dog breeds' });
+    }
 });
 
-app.get("/api/breeds/:id", async (req, res) => {
-  const { id } = req.params;
-  const response = await fetch(
-    `https://api.thedogapi.com/v1/images/search?breed_ids=${id}`,
-    { headers: { "x-api-key": process.env.DOG_API_KEY } }
-  );
-  const data = await response.json();
-  res.json(data[0]);
+// ✅ Fetch breed details by ID (fixed)
+app.get('/api/breeds/:id', async (req, res) => {
+    try {
+        const breedId = req.params.id;
+        const response = await fetch(`https://api.thedogapi.com/v1/images/search?breed_id=${breedId}`, {
+            headers: { 'x-api-key': API_KEY }
+        });
+        const data = await response.json();
+
+        if (data.length === 0 || !data[0].breeds?.length) {
+            return res.status(404).json({ error: 'Breed not found' });
+        }
+
+        const breedData = data[0].breeds[0];
+        const imageUrl = data[0].url;
+
+        res.json({
+            ...breedData,
+            image: { url: imageUrl }
+        });
+
+    } catch (error) {
+        console.error('Server error:', error);
+        res.status(500).json({ error: 'Failed to fetch breed details' });
+    }
 });
 
-// Don't call app.listen()
-export default app;
+app.listen(PORT, () => {
+    console.log(`Server running at http://localhost:${PORT}`);
+});
