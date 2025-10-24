@@ -90,6 +90,31 @@ async function loadBreeds() {
         modalBody.innerHTML = '<p>Error loading breed details</p>';
       }
     }
+    // async function showBreedDetails(breedId) {
+    //   try {
+    //     const res = await fetch(`https://api.thedogapi.com/v1/breeds/${breedId}`, {
+    //       headers: {
+    //         'x-api-key': API_KEY
+    //       }
+    //     });
+    //     const breed = await res.json();
+
+    //     modalBody.innerHTML = `
+    //       <h2>${breed.name}</h2>
+    //       <img src="${breed.image?.url || 'https://via.placeholder.com/300?text=🐶'}" alt="${breed.name}" 
+    //            style="max-width: 100%; height: auto;">
+    //       <p><strong>Temperament:</strong> ${breed.temperament || "N/A"}</p>
+    //       <p><strong>Weight:</strong> ${breed.weight.metric} kg</p>
+    //       <p><strong>Height:</strong> ${breed.height.metric} cm</p>
+    //       <p><strong>Life span:</strong> ${breed.life_span}</p>
+    //     `;
+
+    //     modal.style.display = "flex";
+    //   } catch (error) {
+    //     console.error('Error fetching breed details:', error);
+    //   }
+    // }
+
     // Modal close handlers
     closeBtn.addEventListener("click", () => {
       modal.style.display = "none";
@@ -134,9 +159,6 @@ async function loadBreeds() {
 
 // Start the app
 loadBreeds();
-
-
-
 
 // async function loadBreeds() {
 //     try {
