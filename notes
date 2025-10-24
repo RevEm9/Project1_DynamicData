@@ -1,3 +1,203 @@
-Initially, I copied and looked at Harolds code Coctails A to Z as I wanted to edit the code to have an alphabetical index. I found it overwhelming and also saw that that specific API had a parameter endpoint that specifically organized it alphabetically. Thus, I pivoted and asked chatGPT to fetch a list of breeds from my API and put it into an interactive alphabetical index.
+// Initially, I copied and looked at Harolds code Coctails A to Z as I wanted to edit the code to have an alphabetical index. I found it overwhelming and also saw that that specific API had a parameter endpoint that specifically organized it alphabetically. Thus, I pivoted and asked chatGPT to fetch a list of breeds from my API and put it into an interactive alphabetical index.
 
-Additionally I edited the footer that Harold used in the Coctails A to Z code
+// Additionally I edited the footer that Harold used in the Coctails A to Z code
+
+
+
+// Ran into problems Deploying the front end and back end on vercel due to the server thus below are versions of code that work to host locally but did not work for vercel/github.
+
+// SCRIPT.JS
+
+// async function loadBreeds() {
+//     try {
+//         const res = await fetch('http://localhost:2000/api/breeds');
+//         const breeds = await res.json();
+//         console.log('First breed:', breeds[0]);
+
+//         const alphabetContainer = document.getElementById('alphabet');
+//         const breedList = document.getElementById('breedList');
+//         const searchBar = document.getElementById('searchBar');
+//         const modal = document.getElementById("breedModal");
+//         const modalBody = document.getElementById("modalBody");
+//         const closeBtn = document.querySelector(".close-btn");
+
+//         // Create A–Z buttons
+//         const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+//         alphabet.forEach(letter => {
+//             const btn = document.createElement('span');
+//             btn.textContent = letter;
+//             btn.classList.add('letter');
+//             btn.addEventListener('click', () => showBreedsByLetter(letter));
+//             alphabetContainer.appendChild(btn);
+//         });
+
+//         // Search functionality
+//         searchBar.addEventListener('input', e => {
+//             const query = e.target.value.toLowerCase();
+//             const filtered = breeds.filter(breed =>
+//                 breed.name.toLowerCase().includes(query)
+//             );
+//             renderList(filtered);
+//         });
+
+//         // Show breeds by letter
+//         function showBreedsByLetter(letter) {
+//             const filtered = breeds.filter(b => b.name.startsWith(letter));
+//             renderList(filtered);
+//         }
+
+//         // Show breed details in modal
+//         async function showBreedDetails(breedId) {
+//             try {
+//                 modal.style.display = "flex";
+//                 modalBody.innerHTML = '<p>Loading...</p>';
+
+//                 const res = await fetch(`http://localhost:2000/api/breeds/${breedId}`);
+//                 const breed = await res.json();
+
+//                 modalBody.innerHTML = `
+//                     <h2>${breed.name}</h2>
+//                     <img src="${breed.image?.url || 'https://via.placeholder.com/300?text=🐶'}" 
+//                          alt="${breed.name}"
+//                          style="max-width: 100%; height: auto;">
+//                     <p><strong>Temperament:</strong> ${breed.temperament || "N/A"}</p>
+//                     <p><strong>Weight:</strong> ${breed.weight.metric} kg</p>
+//                     <p><strong>Height:</strong> ${breed.height.metric} cm</p>
+//                     <p><strong>Life span:</strong> ${breed.life_span}</p>
+//                 `;
+//             } catch (error) {
+//                 console.error('Error:', error);
+//                 modalBody.innerHTML = '<p>Error loading breed details</p>';
+//             }
+//         }
+
+//         // Modal close handlers
+//         closeBtn.addEventListener("click", () => {
+//             modal.style.display = "none";
+//         });
+
+//         modal.addEventListener("click", e => {
+//             if (e.target === modal) modal.style.display = "none";
+//         });
+
+//         // Render breed list
+//         function renderList(items) {
+//             breedList.innerHTML = "";
+//             if (items.length === 0) {
+//                 breedList.innerHTML = "<li>No breeds found</li>";
+//                 return;
+//             }
+
+//             items.forEach(breed => {
+//                 const li = document.createElement("li");
+//                 const img = document.createElement("img");
+//                 img.classList.add("breed-image");
+//                 img.src = breed.image?.url || "https://via.placeholder.com/60?text=🐶";
+//                 img.alt = breed.name;
+
+//                 const name = document.createElement("span");
+//                 name.classList.add("breed-name");
+//                 name.textContent = breed.name;
+
+//                 li.appendChild(img);
+//                 li.appendChild(name);
+//                 li.addEventListener("click", () => showBreedDetails(breed.id));
+//                 breedList.appendChild(li);
+//             });
+//         }
+
+//         // Show all breeds by default
+//         renderList(breeds);
+
+//     } catch (error) {
+//         console.error('Error loading breeds:', error);
+//     }
+// }
+
+// // Start the app
+// loadBreeds();
+
+// SERVER.JS
+
+// import express from 'express';
+// import path from 'path';
+// import cors from 'cors';
+// import fetch from 'node-fetch';
+// import { fileURLToPath } from 'url';
+
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
+
+// const app = express();
+// const PORT = 2000;
+// const API_KEY = "live_CxpHq3jPQAgeAAXiazL6UFInqAhkha8kGstILpRGx0HAch7PwrrIMW2rrekblxOK";
+
+// // Middleware
+// app.use(cors());
+// app.use(express.json());
+// app.use(express.static(__dirname));
+
+// // Test route
+// app.get('/test', (req, res) => {
+//     res.json({ message: 'Server is working' });
+// });
+
+// // API endpoint for breeds
+// app.get('/api/breeds', async (req, res) => {
+//     try {
+//         console.log('Fetching breeds...');
+//         const response = await fetch('https://api.thedogapi.com/v1/breeds', {
+//             headers: {
+//                 'x-api-key': API_KEY
+//             }
+//         });
+        
+//         if (!response.ok) {
+//             throw new Error(`HTTP error! status: ${response.status}`);
+//         }
+        
+//         const data = await response.json();
+//         console.log('Breeds fetched successfully');
+//         res.json(data);
+//     } catch (error) {
+//         console.error('Server error:', error);
+//         res.status(500).json({ error: 'Failed to fetch dog breeds' });
+//     }
+// });
+
+// app.get('/api/breeds/:id', async (req, res) => {
+//     try {
+//       const breedId = req.params.id;
+//       console.log(`Fetching breed details for ID: ${breedId}`);
+  
+//       const response = await fetch(
+//         `https://api.thedogapi.com/v1/images/search?breed_ids=${breedId}`,
+//         { headers: { 'x-api-key': API_KEY } }
+//       );
+  
+//       if (!response.ok) {
+//         throw new Error(`HTTP error! status: ${response.status}`);
+//       }
+  
+//       const data = await response.json();
+  
+//       if (data.length === 0) {
+//         return res.status(404).json({ error: "Breed not found" });
+//       }
+  
+//       // Extract breed info and add the image URL
+//       const breed = data[0].breeds[0];
+//       breed.image = { url: data[0].url };
+  
+//       console.log('Breed details fetched successfully');
+//       res.json(breed);
+  
+//     } catch (error) {
+//       console.error('Server error:', error);
+//       res.status(500).json({ error: 'Failed to fetch breed details' });
+//     }
+//   });
+
+// app.listen(PORT, () => {
+//     console.log(`Server running at http://localhost:${PORT}`);
+// });
